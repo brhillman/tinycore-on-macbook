@@ -55,6 +55,10 @@ pcscd -dfe
 The options mean `debug`, `foreground`, and `error`. Running this and then trying to use the `yubico-piv-tool` shows that `pcsc` is looking for drivers in `/usr/` rather than in `/usr/local/`. This is controlled by a flag during configuration for the `pcsc` build, `usbdropdir`, which defaults to `/usr/lib/pcsc/drivers`. I just had to change this to `/usr/local/lib/pcsc/drivers` via:
 
 ```
+meson setup builddir -Dlibsystemd=false -Dusbdropdir=/usr/local/lib/pcsc/drivers --prefix=/usr/local
+```
+
+and then rebuilding and repackaging the extension. Fresh reboot and loading, and now yubico-piv-tool is able to see the yubikey. So now, after loading the ykcs11 module into firefox, authentication works as expected!
 
 ## TODO
   - webcam
@@ -63,8 +67,3 @@ The options mean `debug`, `foreground`, and `error`. Running this and then tryin
   - document xorg settings and drivers (xorg over xvesa)
   - mouse stuff
   - copy and paste not working between terminal and browser
-meson setup builddir -Dlibsystemd=false -Dusbdropdir=/usr/local/lib/pcsc/drivers --prefix=/usr/local
-```
-
-and then rebuilding and repackaging the extension. Fresh reboot and loading, and now yubico-piv-tool is able to see the yubikey. So now, after loading the ykcs11 module into firefox, authentication works as expected!
-
