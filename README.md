@@ -55,6 +55,14 @@ pcscd -dfe
 The options mean `debug`, `foreground`, and `error`. Running this and then trying to use the `yubico-piv-tool` shows that `pcsc` is looking for drivers in `/usr/` rather than in `/usr/local/`. This is controlled by a flag during configuration for the `pcsc` build, `usbdropdir`, which defaults to `/usr/lib/pcsc/drivers`. I just had to change this to `/usr/local/lib/pcsc/drivers` via:
 
 ```
+
+## TODO
+  - webcam
+  - extension recipes / upload to repo
+  - proper sleep / suspend
+  - document xorg settings and drivers (xorg over xvesa)
+  - mouse stuff
+  - copy and paste not working between terminal and browser
 meson setup builddir -Dlibsystemd=false -Dusbdropdir=/usr/local/lib/pcsc/drivers --prefix=/usr/local
 ```
 
