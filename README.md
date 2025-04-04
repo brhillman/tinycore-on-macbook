@@ -60,6 +60,12 @@ meson setup builddir -Dlibsystemd=false -Dusbdropdir=/usr/local/lib/pcsc/drivers
 
 and then rebuilding and repackaging the extension. Fresh reboot and loading, and now yubico-piv-tool is able to see the yubikey. So now, after loading the ykcs11 module into firefox, authentication works as expected!
 
+## Audio
+Follow wiki for setting up alsa: https://wiki.tinycorelinux.net/doku.php?id=wiki:setting_up_sound
+
+## Copy and paste to/from terminal
+aterm does not seem to like keybindings and is not respecting XTerm keybindings. Installing lxterminal is an easy solution to this, but would be nice to figure out how to configure aterm to respect ctrl-shift-c and ctrl-shift-v for copy and paste.
+
 ## TODO
   - webcam
   - extension recipes / upload to repo
