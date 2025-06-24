@@ -66,6 +66,16 @@ Follow wiki for setting up alsa: https://wiki.tinycorelinux.net/doku.php?id=wiki
 ## Copy and paste to/from terminal
 aterm does not seem to like keybindings and is not respecting XTerm keybindings. Installing lxterminal is an easy solution to this, but would be nice to figure out how to configure aterm to respect ctrl-shift-c and ctrl-shift-v for copy and paste.
 
+## Battery life
+Use `acpi` to check battery status.
+
+## Screen brightness
+Check max and current brightness by looking at `/sys/class/backlight/<video_device>/max_brightness` and `/sys/class/backlight/<video_device>/brightness`, and then changing brightness by writing a value less than or equal to `max_brightness` to the brightness file. E.g.,
+```
+echo 5 | sudo tee /sys/class/backlight/acpi_video0/brightness
+```
+where in my case `max_brightness=15` and `<video_device> = acpi_video9`.
+
 ## TODO
   - webcam
   - extension recipes / upload to repo
