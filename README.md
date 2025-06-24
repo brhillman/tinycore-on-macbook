@@ -30,7 +30,7 @@ And then running the `wifi.sh` script with `sudo wifi.sh`. This seems to get eve
 ## PIV-C certificate reading in Firefox 
 Need to install OpenSC. There is no extension package in TCL for this, so need to build from source (and will ultimately need to create a tce package). This required a handful of dependencies, including pcsc-lite which also needed to be built from source, with additional dependencies available from the tce repos.
 
-Once OpenSC is compiled and installed, the opensc-pksc11.so module is supposed to be loaded into Firefox, but this was giving me an error saying that the module could not be loaded. I tried in the standard Firefox install from the tce packages, and also with the esr version which is loaded by running firefox_getLatest -e. This wasn’t either to load the module either.
+Once OpenSC is compiled and installed, the opensc-pksc11.so module is supposed to be loaded into Firefox, but this was giving me an error saying that the module could not be loaded. I tried in the standard Firefox install from the tce packages, and also with the esr version which is loaded by running firefox_getLatest -e. This wasn’t able to load the module either.
 
 One suggestion found on the internet: try loading pcscd before loading pksc11 module in Firefox?
 
@@ -58,7 +58,7 @@ The options mean `debug`, `foreground`, and `error`. Running this and then tryin
 meson setup builddir -Dlibsystemd=false -Dusbdropdir=/usr/local/lib/pcsc/drivers --prefix=/usr/local
 ```
 
-and then rebuilding and repackaging the extension. Fresh reboot and loading, and now yubico-piv-tool is able to see the yubikey. So now, after loading the ykcs11 module into firefox, authentication works as expected!
+and then rebuilding and repackaging the extension. Fresh reboot and loading, and now yubico-piv-tool is able to see the yubikey. So now, after loading the ykcs11 module into firefox, authentication works as expected! Note: pcscd needs to be running before firefox can use piv authentication.
 
 ## Audio
 Follow wiki for setting up alsa: https://wiki.tinycorelinux.net/doku.php?id=wiki:setting_up_sound
