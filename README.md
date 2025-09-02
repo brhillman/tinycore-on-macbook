@@ -1,7 +1,7 @@
 # tinycore-on-macbook
 Notes and tools for running tinycore linux on a 2012 Macbook Air
 
-This will be some rough notes to be cleaned up lated...
+This will be some rough notes to be cleaned up later...
 
 ## Overview
 Installed TinyCore to a removable USB thumbdrive to test compatibility. First created a bootable image on a smaller removable drive using the CorePlus image. Boot from this with extensions and installer, and install to a second removable drive in “frugal” mode. Can now boot from the second drive, and save configuration and extensions and data there. 
